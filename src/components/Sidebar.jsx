@@ -1,5 +1,6 @@
-import { FaHome, FaUser, FaBriefcase, FaCode, FaEnvelope } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { FaHome, FaUser, FaBriefcase, FaCode, FaEnvelope, FaBars } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { id: "home", label: "Home", icon: <FaHome /> },
@@ -11,8 +12,8 @@ const navItems = [
 
 export default function Sidebar() {
   const [activeId, setActiveId] = useState("");
+  const [isOpen, setIsOpen] = useState(true);
 
-  // Scroll handler to highlight the active section
   const handleScroll = () => {
     const sections = navItems.map((item) => document.getElementById(item.id));
     let activeSection = "";
@@ -26,42 +27,60 @@ export default function Sidebar() {
     setActiveId(activeSection);
   };
 
-  // Attach the scroll event listener
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <aside className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center py-8 shadow-2xl z-50 rounded-lg bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-600 bg-opacity-80 backdrop-blur-md transition-all">
-      {navItems.map((item) => (
-        <a
-          key={item.id}
-          href={`#${item.id}`}
-          className={`group my-4 text-white flex flex-col items-center text-sm transition-all duration-300 transform hover:scale-110 ${
-            activeId === item.id
-              ? "text-yellow-400 bg-purple-700 rounded-lg py-2 shadow-2xl"
-              : "hover:text-yellow-400"
-          }`}
-        >
-          <div
-            className={`text-2xl transition-all duration-300 ${
-              activeId === item.id ? "text-yellow-300 glow-effect" : "group-hover:scale-125"
-            }`}
+    <>
+      {/* Hamburger Button */}
+      <button
+        className="fixed top-4 left-4 z-[999] p-2 rounded-full bg-white/10 backdrop-blur-md shadow-md text-white hover:bg-white/20 md:hidden"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <FaBars className="text-xl" />
+      </button>
+
+      {/* Sidebar */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.aside
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -100, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 70 }}
+            className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center py-6 z-50 
+            bg-white/10 backdrop-blur-lg border-r border-white/20 shadow-xl 
+            md:flex md:w-20 md:rounded-none rounded-r-3xl"
           >
-            {item.icon}
-          </div>
-          <span
-            className={`opacity-0 group-hover:opacity-100 text-xs transition-all duration-300 ${
-              activeId === item.id ? "opacity-100" : ""
-            }`}
-          >
-            {item.label}
-          </span>
-        </a>
-      ))}
-    </aside>
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`group my-3 text-white flex flex-col items-center text-sm transition-all duration-300 
+                  hover:scale-110 ${activeId === item.id ? "text-yellow-300" : "hover:text-pink-400"}`}
+              >
+                <div
+                  className={`text-2xl p-3 rounded-xl transition-all duration-300 
+                    ${activeId === item.id
+                      ? "bg-gradient-to-br from-pink-500 to-yellow-400 text-white shadow-xl animate-pulse"
+                      : "bg-white/10 hover:bg-white/20"}`}
+                >
+                  {item.icon}
+                </div>
+                <span
+                  className={`mt-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-1 text-[10px] transition-all duration-300 ${
+                    activeId === item.id ? "opacity-100" : ""
+                  }`}
+                >
+                  {item.label}
+                </span>
+              </a>
+            ))}
+          </motion.aside>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
