@@ -10,10 +10,10 @@ function App() {
   return (
     <div className="flex flex-col lg:flex-row h-screen overflow-hidden bg-gradient-to-tr from-gray-50 to-purple-100">
 
-      {/* Sidebar: Always mounted, responsive behavior handled inside Sidebar.jsx */}
+      {/* ✅ Always render Sidebar — let it handle responsiveness */}
       <Sidebar />
 
-      {/* Main Content Area */}
+      {/* Main Content */}
       <main className="flex-1 w-full h-screen overflow-y-auto p-6 lg:p-10 space-y-24 scroll-smooth scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-200">
         
         {/* Home Section */}
