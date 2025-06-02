@@ -10,10 +10,8 @@ function App() {
   return (
     <div className="flex flex-col lg:flex-row h-screen overflow-hidden bg-gradient-to-tr from-gray-50 to-purple-100">
 
-      {/* Sidebar: Hide on mobile and show on larger screens */}
-      <div className="lg:block hidden w-20 bg-purple-700 text-white p-4 shadow-lg">
-        <Sidebar />
-      </div>
+      {/* Sidebar: Always mounted, responsive behavior handled inside Sidebar.jsx */}
+      <Sidebar />
 
       {/* Main Content Area */}
       <main className="flex-1 w-full h-screen overflow-y-auto p-6 lg:p-10 space-y-24 scroll-smooth scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-200">
