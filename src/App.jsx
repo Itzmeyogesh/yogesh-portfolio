@@ -5,6 +5,7 @@ import About from './sections/About';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
+import Footer from './components/Footer'; // ⬅️ Import Footer
 
 function App() {
   return (
@@ -70,6 +71,9 @@ function App() {
         >
           <Contact />
         </motion.section>
+
+        {/* 🔻 Footer */}
+        <Footer />
 
       </main>
     </div>
