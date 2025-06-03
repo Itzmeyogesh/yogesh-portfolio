@@ -1,4 +1,4 @@
-import React from 'react';
+
 import technicalOneLogo from '../assets/technical-one.jpg'; // adjust the path if needed
 
 const Footer = () => {
