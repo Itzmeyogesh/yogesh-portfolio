@@ -37,10 +37,11 @@ export default function About() {
               About Me
             </h2>
             <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl tracking-wide">
-              Hi! I’m <span className="font-bold text-purple-300">Yogesh Maske</span>, founder of <strong className="text-indigo-300">Technical One</strong>. 
-              With over a decade of experience in tech mentoring & leadership, I've guided 
-              <span className="text-pink-300 font-semibold"> 100+ interns </span> into successful tech careers and collaborated with institutions 
-              to shape the next-gen talent.
+              Hi! I’m <span className="font-bold text-purple-300">Yogesh Maske</span>, founder & innovator behind <strong className="text-indigo-300">Technical One</strong>. 
+              As an entrepreneur and e-learning influencer, I specialize in shaping future-ready talent through tech education, mentorship, and strategic job placement. 
+              I've led and mentored <span className="text-pink-300 font-semibold">100+ interns</span>, worked alongside top institutions like MIT ADT, and actively seek 
+              impactful collaborations. With a strong foundation in web development, team coordination, and career strategy, I'm dedicated to driving innovation 
+              and empowering others to succeed.
             </p>
           </div>
         </div>
@@ -54,8 +55,10 @@ export default function About() {
           >
             <h4 className="text-xl font-bold text-white mb-2">Core Competencies</h4>
             <ul className="list-disc list-inside space-y-2 text-white/90">
+              <li>Entrepreneurship & Innovation</li>
               <li>Team Leadership & Mentorship</li>
               <li>Frontend Dev (React, JS, HTML5, CSS)</li>
+              <li>Strategic Job Search Coaching</li>
               <li>Project & Internship Management</li>
             </ul>
           </motion.div>
@@ -68,7 +71,9 @@ export default function About() {
             <h4 className="text-xl font-bold text-white mb-2">Quick Facts</h4>
             <ul className="list-disc list-inside space-y-2 text-white/90">
               <li>🎓 BCA from Dr. BAMU, Tulsi College</li>
-              <li>🤝 MIT ADT & Cait Pvt Ltd Partner</li>
+              <li>🤝 Partnered with MIT ADT & Cait Pvt Ltd</li>
+              <li>🌐 Actively seeking new collaborations</li>
+              <li>🧠 E-learning Influencer & Career Guide</li>
               <li>🗣️ Fluent in Marathi, Hindi & English</li>
             </ul>
           </motion.div>
