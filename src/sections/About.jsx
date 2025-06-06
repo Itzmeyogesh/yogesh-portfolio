@@ -39,7 +39,7 @@ export default function About() {
             <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl tracking-wide">
               Hi! I’m <span className="font-bold text-purple-300">Yogesh Maske</span>, founder & innovator behind <strong className="text-indigo-300">Technical One</strong>. 
               As an entrepreneur and e-learning influencer, I specialize in shaping future-ready talent through tech education, mentorship, and strategic job placement. 
-              I've led and mentored <span className="text-pink-300 font-semibold">100+ interns</span>, worked alongside top institutions like MIT ADT, and actively seek 
+              I've led and mentored <span className="text-pink-300 font-semibold">1000+ interns</span>, worked alongside top institutions like MIT ADT, and actively seek 
               impactful collaborations. With a strong foundation in web development, team coordination, and career strategy, I'm dedicated to driving innovation 
               and empowering others to succeed.
             </p>
