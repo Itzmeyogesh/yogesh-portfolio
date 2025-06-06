@@ -1,19 +1,27 @@
 import { motion } from "framer-motion";
+import { FaChevronDown } from "react-icons/fa"; // optional scroll cue
 
 export default function Home() {
   return (
     <motion.section
+      id="home"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
+      role="region"
+      aria-labelledby="home-heading"
       className="relative h-screen w-full flex items-center justify-center px-6 md:px-12 overflow-hidden bg-gradient-to-br from-[#1e1e2f] via-[#2a2a40] to-[#1e1e2f]"
     >
       {/* Floating blurred blobs */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob delay-[2000ms]"></div>
 
-      <div className="z-10 max-w-4xl w-full backdrop-blur-md bg-white/10 p-10 rounded-3xl shadow-xl border border-white/20 text-white">
-        <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400">
+      {/* Content Box */}
+      <div className="z-10 max-w-4xl w-full backdrop-blur-md bg-white/10 p-10 rounded-3xl shadow-xl border border-white/20 text-white text-center">
+        <h1
+          id="home-heading"
+          className="text-4xl sm:text-6xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400"
+        >
           Hi, I'm Yogesh Maske
         </h1>
 
@@ -27,9 +35,10 @@ export default function Home() {
           meaningful outcomes. Let's turn ideas into real impact together.
         </p>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-4">
+        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
           <a
             href="#contact"
+            aria-label="Go to contact section"
             className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-600 text-white rounded-full text-lg font-semibold shadow-md transition-transform transform hover:scale-105"
           >
             Let’s Connect
@@ -38,10 +47,16 @@ export default function Home() {
           <a
             href="Public/Yogesh_Maske_CV.pdf"
             download
+            aria-label="Download Yogesh Maske's CV"
             className="px-6 py-3 bg-transparent text-white border-2 border-indigo-400 hover:bg-indigo-600 hover:text-white rounded-full text-lg font-semibold shadow-md transition-transform transform hover:scale-105"
           >
             Download CV
           </a>
+        </div>
+
+        {/* Optional scroll cue icon */}
+        <div className="mt-10 text-indigo-300 animate-bounce hidden sm:block">
+          <FaChevronDown size={24} />
         </div>
       </div>
     </motion.section>
