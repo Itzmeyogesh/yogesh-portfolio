@@ -5,7 +5,7 @@ import About from './sections/About';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
 import Contact from './sections/Contact';
-import Footer from './components/Footer'; // ⬅️ Import Footer
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Sidebar />
 
       {/* ✅ Main Content */}
-      <main className="flex-1 w-full h-screen overflow-y-auto p-4 sm:p-6 lg:p-10 space-y-10 lg:space-y-24 scroll-smooth scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-200">
+      <main className="flex-1 w-full h-screen overflow-y-auto p-4 sm:p-6 lg:p-10 space-y-6 sm:space-y-8 lg:space-y-16 scroll-smooth scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-purple-200">
 
         {/* 🏠 Home Section */}
         <motion.section
