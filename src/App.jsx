@@ -10,18 +10,20 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="flex flex-col lg:flex-row h-screen overflow-hidden bg-gradient-to-tr from-black to-purple-900 text-white">
-
+      
       {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
-      <main className="flex-1 w-full h-screen overflow-y-auto p-3 sm:p-4 lg:p-10 space-y-4 sm:space-y-6 lg:space-y-12 
-        scroll-smooth scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-black bg-black text-white">
-
+      <main
+        className="flex-1 w-full h-screen overflow-y-auto p-4 sm:p-6 lg:p-10 
+        scroll-smooth scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-black bg-black text-white 
+        space-y-10 sm:space-y-12 lg:space-y-16"
+      >
         {/* Home */}
         <motion.section
           id="home"
-          className="min-h-[90vh]"
+          className="py-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -33,7 +35,7 @@ function App() {
         {/* About */}
         <motion.section
           id="about"
-          className="min-h-[90vh]"
+          className="py-16"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -45,7 +47,7 @@ function App() {
         {/* Experience */}
         <motion.section
           id="experience"
-          className="min-h-[90vh]"
+          className="py-16"
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -57,7 +59,7 @@ function App() {
         {/* Skills */}
         <motion.section
           id="skills"
-          className="min-h-[90vh]"
+          className="py-16"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
@@ -69,7 +71,7 @@ function App() {
         {/* Contact */}
         <motion.section
           id="contact"
-          className="min-h-[90vh]"
+          className="py-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -80,7 +82,6 @@ function App() {
 
         {/* Footer */}
         <Footer />
-
       </main>
     </div>
   );
