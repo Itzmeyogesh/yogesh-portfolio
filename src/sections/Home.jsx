@@ -10,14 +10,14 @@ export default function Home() {
       transition={{ duration: 1 }}
       role="region"
       aria-labelledby="home-heading"
-      className="relative min-h-screen w-full flex items-start sm:items-center justify-start sm:justify-center px-4 sm:px-6 md:px-12 py-12 sm:py-0 overflow-hidden bg-gradient-to-br from-[#1e1e2f] via-[#2a2a40] to-[#1e1e2f]"
+      className="relative min-h-screen w-full flex items-center justify-center px-4 sm:px-6 md:px-12 bg-gradient-to-br from-[#1e1e2f] via-[#2a2a40] to-[#1e1e2f] overflow-hidden"
     >
       {/* Floating blurred blobs */}
       <div className="absolute top-0 left-0 w-56 h-56 sm:w-72 sm:h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
       <div className="absolute bottom-10 right-10 w-56 h-56 sm:w-72 sm:h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob delay-[2000ms]"></div>
 
       {/* Content Box */}
-      <div className="z-10 max-w-4xl w-full backdrop-blur-md bg-white/10 p-6 sm:p-10 rounded-2xl sm:rounded-3xl shadow-xl border border-white/20 text-white text-center mt-8 sm:mt-0">
+      <div className="z-10 max-w-4xl w-full backdrop-blur-md bg-white/10 p-6 sm:p-10 rounded-2xl sm:rounded-3xl shadow-xl border border-white/20 text-white text-center">
         <h1
           id="home-heading"
           className="text-3xl sm:text-5xl font-extrabold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-400 to-blue-400"
