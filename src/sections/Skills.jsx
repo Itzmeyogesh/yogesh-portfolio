@@ -1,98 +1,77 @@
 import { motion } from 'framer-motion';
+import { FaBullseye } from 'react-icons/fa'; // ✅ Updated icon
+
+const skills = [
+  { category: 'Frontend', list: ['HTML5', 'CSS', 'JavaScript', 'React JS'] },
+  {
+    category: 'Project & Training',
+    list: ['Mentorship', 'Team Management', 'Internship Coordination'],
+  },
+  { category: 'Tools & Platforms', list: ['GitHub', 'LinkedIn', 'NCS Portal', 'Git'] },
+  { category: 'Backend & Development', list: ['Node.js'] },
+];
 
 export default function Skills() {
-  const skills = [
-    { category: 'Frontend', list: ['HTML5', 'CSS', 'JavaScript', 'React JS'] },
-    { category: 'Project & Training', list: ['Mentorship', 'Team Management', 'Internship Coordination'] },
-    { category: 'Tools & Platforms', list: ['GitHub', 'LinkedIn', 'NCS Portal', 'Git'] },
-    { category: 'Backend & Development', list: ['Node.js'] },
-  ];
-
   return (
     <motion.section
+      id="skills"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="relative py-24 px-6 md:px-12 font-poppins text-gray-100 max-w-6xl mx-auto"
-      style={{
-        background: 'linear-gradient(135deg, #7b5acf 0%, #5e4b8b 50%, #312f4f 100%)',
-      }}
+      role="region"
+      aria-labelledby="skills-heading"
+      className="relative py-24 px-6 md:px-12 font-poppins text-gray-100 max-w-7xl mx-auto"
     >
-      {/* Animated Background SVG */}
-      <svg
-        className="absolute top-0 left-0 w-full h-full pointer-events-none"
-        aria-hidden="true"
-      >
-        <defs>
-          <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#9f7aea" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#5a47a3" stopOpacity="0" />
-          </radialGradient>
-          <radialGradient id="grad2" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#6b46c1" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#3c366b" stopOpacity="0" />
-          </radialGradient>
-        </defs>
+      {/* Floating Gradient Glows */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-10 left-10 w-72 h-72 bg-purple-500/30 rounded-full blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-[120px] animate-pulse-slower" />
+      </div>
 
-        <circle cx="25%" cy="30%" r="200" fill="url(#grad1)">
-          <animate
-            attributeName="cx"
-            values="20%;30%;20%"
-            dur="12s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="cy"
-            values="25%;35%;25%"
-            dur="10s"
-            repeatCount="indefinite"
-          />
-        </circle>
-
-        <circle cx="75%" cy="70%" r="180" fill="url(#grad2)">
-          <animate
-            attributeName="cx"
-            values="70%;80%;70%"
-            dur="15s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="cy"
-            values="65%;75%;65%"
-            dur="13s"
-            repeatCount="indefinite"
-          />
-        </circle>
-      </svg>
-
-      {/* Glass Container */}
-      <div
-        className="relative z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-xl p-12"
-        style={{ minHeight: '360px' }}
-      >
-        <h2 className="text-4xl font-extrabold text-white mb-12 text-center tracking-wide drop-shadow-lg">
-          Skills & Expertise
+      {/* Content Box */}
+      <div className="relative z-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl p-12">
+        <h2
+          id="skills-heading"
+          className="text-4xl sm:text-5xl font-bold text-white mb-14 text-center tracking-wide drop-shadow-lg flex justify-center items-center gap-4"
+        >
+          <FaBullseye className="text-purple-300 drop-shadow-md animate-pulse" />
+          <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-yellow-200 bg-clip-text text-transparent">
+            Skills & Expertise
+          </span>
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-12 text-gray-200">
+        <div className="grid md:grid-cols-2 gap-14 text-gray-200">
           {skills.map((skillGroup, index) => (
-            <div key={index}>
-              <h3 className="text-xl font-semibold text-purple-300 mb-4 tracking-wide">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-semibold text-purple-200 mb-4 tracking-wide border-b border-purple-400 pb-1">
                 {skillGroup.category}
               </h3>
-              <div className="flex flex-wrap gap-3">
+
+              <ul className="flex flex-wrap gap-3">
                 {skillGroup.list.map((skill) => (
-                  <motion.span
+                  <motion.li
                     key={skill}
-                    whileHover={{ scale: 1.1, boxShadow: '0 8px 15px rgba(167,139,250,0.6)' }}
-                    transition={{ type: 'spring', stiffness: 150 }}
-                    className="bg-purple-800 bg-opacity-40 text-purple-200 px-4 py-1 rounded-full text-sm font-medium cursor-default select-none shadow-md"
+                    whileHover={{
+                      scale: 1.08,
+                      rotate: 2,
+                      backgroundColor: 'rgba(167,139,250,0.3)',
+                      boxShadow: '0 0 12px rgba(139,92,246,0.6)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                    className="bg-gradient-to-br from-purple-700/30 to-purple-900/30 text-purple-100 px-4 py-1 rounded-full text-sm font-medium cursor-default select-none shadow-sm list-none backdrop-blur-md"
+                    title={skill}
                   >
                     {skill}
-                  </motion.span>
+                  </motion.li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </motion.div>
           ))}
         </div>
       </div>
