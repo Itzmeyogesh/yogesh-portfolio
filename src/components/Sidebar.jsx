@@ -26,10 +26,10 @@ export default function Sidebar() {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      setIsOpen(!mobile); // open by default on desktop
+      setIsOpen(!mobile);
     };
 
-    handleResize(); // initial check
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -53,7 +53,10 @@ export default function Sidebar() {
   }, []);
 
   const handleNavClick = () => {
-    if (isMobile) setIsOpen(false);
+    if (isMobile) {
+      if (navigator.vibrate) navigator.vibrate(10);
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -68,7 +71,7 @@ export default function Sidebar() {
         </button>
       )}
 
-      {/* Overlay for Mobile */}
+      {/* Overlay */}
       <AnimatePresence>
         {isOpen && isMobile && (
           <motion.div
@@ -85,37 +88,45 @@ export default function Sidebar() {
       <AnimatePresence>
         {isOpen && (
           <motion.aside
-            initial={{ x: -200, opacity: 0 }}
+            initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -200, opacity: 0 }}
+            exit={{ x: -100, opacity: 0 }}
             transition={{ type: "spring", stiffness: 70 }}
-            className="fixed top-0 left-0 h-screen w-20 flex flex-col items-center py-6 z-[1001]
-              bg-white/10 backdrop-blur-lg border-r border-white/20 shadow-xl rounded-r-3xl md:rounded-none md:w-20"
+            className="fixed top-1/4 left-0 h-1/2 w-16 md:w-16 z-[1001]
+              bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl 
+              rounded-r-3xl rounded-b-3xl flex flex-col items-center justify-center space-y-3"
           >
             {navItems.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={handleNavClick}
-                className={`group my-3 text-white flex flex-col items-center text-sm transition-all duration-300 
-                hover:scale-110 ${
-                  activeId === item.id ? "text-yellow-300" : "hover:text-pink-400"
-                }`}
+                title={item.label}
+                className={`group relative text-white flex flex-col items-center text-xs transition-all duration-300 
+                ${activeId === item.id ? "text-yellow-300" : "hover:text-pink-400"}`}
               >
                 <div
-                  className={`text-2xl p-3 rounded-xl transition-all duration-300 
+                  className={`text-base p-2 rounded-full transition-transform duration-300 
                     ${
                       activeId === item.id
                         ? "bg-gradient-to-br from-pink-500 to-yellow-400 text-white shadow-xl animate-pulse"
-                        : "bg-white/10 hover:bg-white/20"
+                        : "bg-white/10 hover:bg-white/20 group-hover:scale-110"
                     }`}
                 >
                   {item.icon}
                 </div>
+
+                {/* Tooltip (desktop only) */}
+                <motion.span
+                  className="absolute left-14 bg-black text-white text-[10px] font-medium py-1 px-2 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 hidden md:block"
+                >
+                  {item.label}
+                </motion.span>
+
+                {/* Label under icon (mobile or hover) */}
                 <span
-                  className={`mt-1 opacity-0 group-hover:opacity-100 group-hover:translate-y-1 text-[10px] transition-all duration-300 ${
-                    activeId === item.id ? "opacity-100" : ""
-                  }`}
+                  className={`mt-1 text-[9px] opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300 
+                    ${activeId === item.id ? "opacity-100" : ""}`}
                 >
                   {item.label}
                 </span>
